@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downtown Memphis Decline - Interactive Website</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+        color: #fff;
+      }
+      body {
+        background-color: #333;
+        overflow-x: hidden;
+      }
+      #nav {
+        position: fixed;
+        width: 100%;
+        height: 80px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 1000;
+      }
+      #nav h3 {
+        font-size: 24px;
+        text-transform: uppercase;
+      }
+      .nav-btns {
+        display: flex;
+        gap: 20px;
+      }
+      .nav-btns button {
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-btns button:hover {
+        color: #ffdd57;
+      }
+      section {
+        height: 100vh;
+        padding: 100px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-align: center;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      }
+      p {
+        width: 70%;
+        font-size: 1.2em;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.6;
+        transform: translateY(30px);
+        opacity: 0;
+        transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      }
+      .visible h1,
+      .visible p {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .interactive-img,
+      .map-placeholder {
+        width: 50%;
+        height: 200px;
+        background-color: #555;
+        border-radius: 8px;
+        margin-top: 20px;
+        transition: transform 0.6s ease-out;
+      }
+      .interactive-img:hover,
+      .map-placeholder:hover {
+        transform: scale(1.05);
+      }
+      .image-slider {
+        position: relative;
+        width: 40%;
+        height: 20px;
+      }
+      .image-slider img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .image-slider img:first-child {
+        opacity: 1;
+      }
+      .chart-container {
+        width: 80%;
+        height: 300px;
+        margin-top: 20px;
+      }
+      #crimeChart,
+      #transportChart {
+        width: 100%;
+        height: 100%;
+      }
+      #solutions {
+        margin-top: 500px;
+      }
+      .crime-image-container {
+        display: flex;
+        margin-left: 600px;
+        width: 2200px;
+      }
+      .crime-text-container {
+        margin-left: 350px;
+      }
+
+      .transport-image-container {
+        display: flex;
+        width: 160%;
+        height: 10px;
+        margin-left: 1300px;
+        /* margin-top: 45px;
+        margin-left: 185px;
+        width: 140%;
+        height: 400px; */
+      }
+
+      .transport-text-container {
+        margin-top: 10px;
+        text-decoration: none;
+        margin-left: 240px;
+      }
+      .solution-image {
+        height: 140%;
+      }
+      .image-slider-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .image-slider {
+        width: 80%; /* Adjust width as needed */
+        max-width: 890px; /* Prevent it from getting too large on larger screens */
+        height: auto;
+        position: relative;
+      }
+      .image-slider video {
+        width: 100%;
+        height: auto;
+      }
+
+      .interactive-img {
+        width: 150%;
+        height: 450px;
+      }
+      .crime-image-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      #problems{
+        
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <h3>Memphis Downtown Decline</h3>
+      <div class="nav-btns">
+        <button onclick="scrollToSection('thesis')">Thesis Argument</button>
+        <button onclick="scrollToSection('problems')">Problems</button>
+        <button onclick="scrollToSection('solutions')">Solutions</button>
+      </div>
+    </div>
+
+    <section id="thesis">
+      <h1>Thesis Argument</h1>
+      <p>
+        The decline of Downtown Memphis is rooted in a complex web of factors,
+        including inadequate urban planning, suburban sprawl, and disorganized
+        economic priorities. This section will explore these factors and their
+        impact on Memphis.
+      </p>
+      <div class="image-slider">
+        <video controls autoplay>
+          <source src="ENGL1020.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+    <section id="problems">
+      <h1>Problems</h1>
+      <p>
+        Suburban sprawl, poor transportation infrastructure, and high crime
+        rates have each contributed to the deterioration of Downtown Memphis.
+        While other cities prioritized downtown revitalization, Memphis did not.
+      </p>
+
+      <div class="crime-image-container">
+        <a
+          href="https://www.neighborhoodscout.com/tn/memphis/crime"
+          target="_blank"
+        >
+          <img
+            src="downtown.png"
+            alt="Crime Rates in Memphis"
+            class="interactive-img"
+          />
+        </a>
+
+        <div class="crime-text-container">
+          <h2 style="padding-left: 300px">High Crime Rates</h2>
+          <p>
+            According to the Tennessee Bureau of Investigation, the violent
+            crime rate in Downtown Memphis is nearly double the national average
+            (TBI, 2021). This statistic, coupled with a sense of fear and
+            desolation, has driven residents and investors away from the area
+            (Biles, Epitaph 280). Public transportation limitations further
+            exacerbate this issue, making it harder for people to safely travel
+            in and out of the downtown area.
+          </p>
+          <p>
+            Scholars studying the link between crime and urban development have
+            found a strong correlation: as crime increases, the economic
+            vitality of an area declines (ULI, 2023). Memphis' failure to
+            address its crime problem has undoubtedly hindered its potential for
+            growth.
+          </p>
+        </div>
+      </div>
+
+      <div class="transport-image-container">
+        <a
+          href="https://ridewithvia.com/resources/filling-the-gaps-in-areas-with-limited-or-no-transit-options"
+          target="_blank"
+          style="text-decoration: none"
+        >
+          <img
+            src="https://39563058.fs1.hubspotusercontent-na1.net/hub/39563058/hubfs/Imported_Blog_Media/Memphis-two-zones.png?width=2294&height=1510&name=Memphis-two-zones.png"
+            alt="Transportation Issues in Memphis"
+            class="interactive-img"
+            class="transport-image-container"
+          />
+        </a>
+
+        <div class="transport-text-container">
+          <h2>Transportation Challenges</h2>
+          <p>
+            Memphis' inadequate public transportation system has further
+            hindered its downtown revitalization efforts. The Memphis Area
+            Transit Authority (MATA) report from 2022 revealed that 90% of city
+            residents rarely use public transportation (MATA, 2022). This lack
+            of reliable public transport options makes it difficult for people
+            to commute to and from the downtown area, discouraging businesses
+            and residents alike. As shown in the map, A huge part of memphis is
+            deserted from the bus trasnport.
+          </p>
+          <p>
+            Memphis' failure to invest in and expand its bus services has
+            contributed to the decline of its downtown area, making it less
+            accessible and less desirable for businesses and residents.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions">
+      <h1>Solutions</h1>
+      <p>
+        Investment in infrastructure, enhanced public transportation, and
+        collaborative public-private partnerships could revive Downtown Memphis.
+        Learning from other cities' successes offers a path forward.
+      </p>
+      <img
+        src="Screenshot 2024-11-11 at 5.49.46 PM.png"
+        alt="Public Transport in Downtown"
+        class="solution-image"
+        class="interactive-img"
+      />
+      <div class="chart-container">
+        <canvas id="transportChart"></canvas>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Scroll animation for sections
+      const sections = document.querySelectorAll("section");
+
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY + window.innerHeight * 0.75;
+        sections.forEach((section) => {
+          if (scrollPos > section.offsetTop) {
+            section.classList.add("visible");
+          }
+        });
+      });
+
+      const imageSliders = document.querySelectorAll(".image-slider");
+
+      imageSliders.forEach((slider) => {
+        const images = slider.querySelectorAll("img");
+        let currentIndex = 0;
+
+        setInterval(() => {
+          images[currentIndex].style.opacity = 0;
+          currentIndex = (currentIndex + 1) % images.length;
+          images[currentIndex].style.opacity = 1;
+        }, 3000); // Adjust the interval as needed
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              } else {
+                entry.target.classList.remove("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1, // Adjust the threshold as needed
+          }
+        );
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+
+      // Chart.js for creating interactive charts
+      const crimeCtx = document.getElementById("crimeChart").getContext("2d");
+      const transportCtx = document
+        .getElementById("transportChart")
+        .getContext("2d");
+
+      const crimeChart = new Chart(crimeCtx, {
+        type: "line",
+        data: {
+          labels: ["2000", "2005", "2010", "2015", "2020"],
+          datasets: [
+            {
+              label: "Crime Rate in Memphis",
+              data: [80, 70, 65, 60, 55], // Example data
+              fill: false,
+              borderColor: "#FF5733",
+              tension: 0.1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+          },
+        },
+      });
+
+      const transportChart = new Chart(transportCtx, {
+        type: "bar",
+        data: {
+          labels: ["1990", "2000", "2010", "2020"],
+          datasets: [
+            {
+              label: "Public Transport Usage",
+              data: [300, 400, 350, 500], // Example data
+              backgroundColor: "#5C6BC0",
+              borderColor: "#3F51B5",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+          },
+        },
+      });
+
+      // Add hover effect for crime text container
+      const crimeImage = document.querySelector(".interactive-img");
+      const crimeTextContainer = document.querySelector(
+        ".crime-text-container"
+      );
+
+      crimeImage.addEventListener("mouseover", () => {
+        crimeTextContainer.classList.add("hovered");
+      });
+
+      crimeImage.addEventListener("mouseout", () => {
+        crimeTextContainer.classList.remove("hovered");
+      });
+
+      // Optionally, add a click event to open a detailed page or modal window
+      /*
+      crimeImage.addEventListener("click", () => {
+        // Open a new page or modal window with additional crime information
+      });
+      */
+    </script>
+  </body>
+</html>
