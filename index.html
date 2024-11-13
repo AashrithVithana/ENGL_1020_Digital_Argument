@@ -132,18 +132,18 @@
       }
       .crime-image-container {
         display: flex;
-        margin-left: 600px;
+        margin-left: 500px;
         width: 2200px;
       }
       .crime-text-container {
-        margin-left: 350px;
+        margin-left: 200px;
       }
 
       .transport-image-container {
         display: flex;
-        width: 160%;
-        height: 10px;
-        margin-left: 1300px;
+        width: 1900px;
+        height: 750px;
+        margin-left: 200px;
         /* margin-top: 45px;
         margin-left: 185px;
         width: 140%;
@@ -153,7 +153,7 @@
       .transport-text-container {
         margin-top: 10px;
         text-decoration: none;
-        margin-left: 240px;
+        margin-left: 600px;
       }
       .solution-image {
         height: 140%;
@@ -180,12 +180,13 @@
         width: 150%;
         height: 450px;
       }
-      .crime-image-container {
+
+      #problems {
         display: flex;
         justify-content: space-between;
       }
-      #problems{
-        
+      #thesis {
+        padding-bottom: 0px;
       }
     </style>
   </head>
@@ -208,9 +209,16 @@
         impact on Memphis.
       </p>
       <div class="image-slider">
-        <video controls autoplay>
-          <source src="ENGL1020.mp4" type="video/mp4" />
-        </video>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/TeI7JRaiLOA?si=Fymt4lABY1Ix5Z8L"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
     </section>
     <section id="problems">
@@ -234,7 +242,7 @@
         </a>
 
         <div class="crime-text-container">
-          <h2 style="padding-left: 300px">High Crime Rates</h2>
+          <h2 style="margin-left: 500px">High Crime Rates</h2>
           <p>
             According to the Tennessee Bureau of Investigation, the violent
             crime rate in Downtown Memphis is nearly double the national average
@@ -263,13 +271,13 @@
           <img
             src="https://39563058.fs1.hubspotusercontent-na1.net/hub/39563058/hubfs/Imported_Blog_Media/Memphis-two-zones.png?width=2294&height=1510&name=Memphis-two-zones.png"
             alt="Transportation Issues in Memphis"
+            style="width: 300%"
             class="interactive-img"
-            class="transport-image-container"
           />
         </a>
 
         <div class="transport-text-container">
-          <h2>Transportation Challenges</h2>
+          <h2 style="margin-left: 200px">Transportation Challenges</h2>
           <p>
             Memphis' inadequate public transportation system has further
             hindered its downtown revitalization efforts. The Memphis Area
@@ -431,6 +439,58 @@
         // Open a new page or modal window with additional crime information
       });
       */
+    </script>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading."
+        );
+      }
+      // ]]>
     </script>
   </body>
 </html>
