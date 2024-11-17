@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +5,7 @@
     <title>Downtown Memphis Decline - Interactive Website</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap"
     />
     <style>
       * {
@@ -146,9 +145,9 @@
         height: 750px;
         margin-left: 200px;
         /* margin-top: 45px;
-        margin-left: 185px;
-        width: 140%;
-        height: 400px; */
+      margin-left: 185px;
+      width: 140%;
+      height: 400px; */
       }
 
       .transport-text-container {
@@ -190,9 +189,23 @@
       #thesis {
         padding-bottom: 0px;
       }
+      #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1; /* Ensure the video is behind the content */
+      }
     </style>
   </head>
   <body>
+    <video autoplay loop muted playsinline id="background-video">
+      <source src="Untitled.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
     <div id="nav">
       <h3>Memphis Downtown Decline</h3>
       <div class="nav-btns">
@@ -202,7 +215,7 @@
       </div>
     </div>
 
-    <section id="thesis">
+    <section id="thesis" class="visible">
       <h1>Thesis Argument</h1>
       <p>
         The decline of Downtown Memphis is rooted in a complex web of factors,
@@ -219,11 +232,11 @@
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          allowfullscreen=""
         ></iframe>
       </div>
     </section>
-    <section id="problems">
+    <section id="problems" class="visible">
       <h1>Problems</h1>
       <p>
         Suburban sprawl, poor transportation infrastructure, and high crime
@@ -271,7 +284,7 @@
           style="text-decoration: none"
         >
           <img
-            src="https://39563058.fs1.hubspotusercontent-na1.net/hub/39563058/hubfs/Imported_Blog_Media/Memphis-two-zones.png?width=2294&height=1510&name=Memphis-two-zones.png"
+            src="https://39563058.fs1.hubspotusercontent-na1.net/hub/39563058/hubfs/Imported_Blog_Media/Memphis-two-zones.png?width=2294&amp;height=1510&amp;name=Memphis-two-zones.png"
             alt="Transportation Issues in Memphis"
             style="width: 277%; margin-left: 145px"
             class="interactive-img"
@@ -299,21 +312,77 @@
       </div>
     </section>
 
-    <section id="solutions">
+    <section id="solutions" class="visible">
       <h1>Solutions</h1>
       <p>
         Investment in infrastructure, enhanced public transportation, and
         collaborative public-private partnerships could revive Downtown Memphis.
         Learning from other cities' successes offers a path forward.
       </p>
-      <img
-        src="Screenshot 2024-11-11 at 5.49.46 PM.png"
-        alt="Public Transport in Downtown"
-        class="solution-image"
-        class="interactive-img"
-      />
-      <div class="chart-container">
-        <canvas id="transportChart"></canvas>
+      <div style="width: 100%; display: flex; justify-content: space-between">
+        <div style="width: 500px; margin-left: 0px">
+          <a
+            href="https://www.transitchicago.com/maps/system/"
+            target="_blank"
+            style="text-decoration: none"
+          >
+            <img
+              src="ATLANTA_TRAN.png"
+              class="interactive-img"
+              style="height: 500px; width: 130%; margin-left: 0px"
+            />
+            <p style="font-style: italic; margin-left: 150px">
+              Chicago Downtown Transit
+            </p>
+          </a>
+          <div style="text-align: center; width: 650px">
+            <p style="width: 100%">
+              Atlanta's downtown transit system, driven by the Metropolitan
+              Atlanta Rapid Transit Authority (MARTA), is a model of efficiency
+              and connectivity. MARTA combines a well-planned network of trains
+              and buses, offering frequent and reliable services that link the
+              downtown core to surrounding neighborhoods and the broader
+              metropolitan area. This system not only supports daily commuters
+              but also encourages tourism and economic activity by providing
+              easy access to attractions, businesses, and events. The strategic
+              investment in transit infrastructure has made Atlanta’s downtown a
+              vibrant, accessible, and bustling urban center, demonstrating the
+              transformative power of robust public transportation.
+            </p>
+          </div>
+        </div>
+        <div style="margin-left: 0px; width: 800px">
+          <a
+            href="https://www.matatransit.com/assets/2/6/Trolley_map_3_19_Rev2.pdf"
+            target="_blank"
+            style="text-decoration: none"
+          >
+            <img
+              src="MEM_TRAN.png"
+              class="interactive-img"
+              style="height: 500px; width: 550px"
+            />
+            <p style="font-style: italic; margin-left: 200px">
+              Memphis Downtown Transit
+            </p>
+          </a>
+          <div style="text-align: center">
+            <p style="width: 100%">
+              In contrast, Memphis relies heavily on its trolley system for
+              downtown transit, but it falls short in functionality compared to
+              cities like Atlanta. While the trolleys add a nostalgic charm and
+              attract some tourists, their limited routes, infrequent schedules,
+              and operational challenges diminish their practicality for
+              residents and commuters. The lack of integration with a larger,
+              more comprehensive transit network hinders connectivity, making it
+              difficult for people to navigate efficiently within downtown
+              Memphis or to access other parts of the city. This inadequacy
+              underscores the need for Memphis to invest in a more modern and
+              expansive transit solution to foster growth and economic
+              revitalization.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -437,10 +506,62 @@
 
       // Optionally, add a click event to open a detailed page or modal window
       /*
-      crimeImage.addEventListener("click", () => {
-        // Open a new page or modal window with additional crime information
-      });
-      */
+    crimeImage.addEventListener("click", () => {
+      // Open a new page or modal window with additional crime information
+    });
+    */
+    </script>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading."
+        );
+      }
+      // ]]>
     </script>
     <!-- Code injected by live-server -->
     <script>
